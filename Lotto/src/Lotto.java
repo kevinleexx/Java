@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class Lotto {
 
@@ -24,6 +25,19 @@ public class Lotto {
 		}
 		int[] lottoAry = new int[lottosize];
 		System.out.println("樂透開獎實體陣列產生完畢");
+		for (int i = 0; i < lottosize; i++) {
+			lottoAry[i] = (int) (Math.random() * 49 + 6);
+			for (int j = 0; j < i; j++) {
+				if (lottoAry[i] == lottoAry[j]) {
+					lottoAry[i] = (int) (Math.random() * 49 + 6);
+					j = -1;
+				}
+			}
+		}
+		Arrays.sort(lottoAry);
+		System.out.println("本期開獎數字為：");
+		for (int a : lottoAry)
+			System.out.print(a + " ");
 
 	}
 
